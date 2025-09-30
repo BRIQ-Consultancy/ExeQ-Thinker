@@ -274,7 +274,7 @@ memory:
 ---
 
 ## API Endpoints
-### 1) (POST /chat json format)
+### 1) (POST /chat)
 ```
 {
   "message": "your prompt",
@@ -286,7 +286,7 @@ memory:
 
 ---
 
-### 2) (POST /rag/reindex json format)
+### 2) (POST /rag/reindex)
 Rescans and vectorizes the RAG repository.
 ```
 curl -X POST http://localhost:5001/rag/reindex
