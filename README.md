@@ -48,7 +48,7 @@ Bu yapı, onu aşağıdakiler için vazgeçilmez kılar:
   - **Detaylı Loglama:** Her bir düşünce adımını, araç çağrısını ve kararını kaydederek tam bir denetlenebilirlik sağlar.
 
 - 🧠 **Özel Olarak İnce Ayarlanmış Model (`gpt-oss:20b-exeq`):**
-  - **Temel Model:** Güçlü ve açık kaynaklı `ollama gpt-oss:20b`.
+  - **Temel Model:** Güçlü ve açık kaynaklı `ollama gopt-oss:20b`.
   - **Eğitim Verisi:** Akıl yürütme, planlama ve araç kullanımı üzerine odaklanmış, **1.8 milyon ham örnekten oluşan (toplamda 400 milyar token'dan fazla)** devasa bir veri seti ile ince ayar (fine-tuning) yapılmıştır. Bu, modelin karmaşık talimatları anlama ve uygulama yeteneğini zirveye taşır.
 
 ---
@@ -72,7 +72,7 @@ graph TD
     end
 
     subgraph "Hesaplama ve Veri Katmanı"
-        G[🚀 GPU ile Hızlandırılmış Model (gpt-oss:20b-exeq)]
+        G["🚀 GPU ile Hızlandırılmış Model (gpt-oss:20b-exeq)"]
         H[📚 Harici Araçlar (RAG, API'ler, DB)]
     end
 
