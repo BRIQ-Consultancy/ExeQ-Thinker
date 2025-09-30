@@ -132,7 +132,7 @@ sequenceDiagram
   - Total Tokens: ~400 billion tokens (after cleaning + deduplication)
   - Environment: Unsloth-optimized LoRA fine-tuning → lightweight & efficient adaptation strategy.
   - Training Duration: Completed in ~11 days on dual RTX 5090, achieving ~1.2M tokens/sec throughput and traversing ~400B tokens over 3 LoRA epochs.
-  - Long-context training: Synthetic samples up to 128K tokens for RoPE adaptation (128k context length to 256k!)
+  - Long-context training: Synthetic samples up to 128K tokens for RoPE adaptation (128k context length upscaled to 256k!)
   - Objective: Deliberate reasoning quality, tool call accuracy, long-context consistency.
   - Curation: High-quality reasoning chains, code/SQL examples, multilingual Q&A, safe usage guidelines.
   - Noise Reduction: Dedup, quality scorers, toxicity and PI protection filters.
