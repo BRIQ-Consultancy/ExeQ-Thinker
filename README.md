@@ -1,3 +1,5 @@
+-----
+
 ````markdown
 <p align="center">
   <img src="https://github.com/user-attachments/assets/50fe082c-141a-42a5-92d0-089bad5a0e1b" alt="BRIQ Logo" width="150"/>
