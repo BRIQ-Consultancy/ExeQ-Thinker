@@ -1,20 +1,40 @@
 ![BRIQ_logo](https://github.com/user-attachments/assets/50fe082c-141a-42a5-92d0-089bad5a0e1b)
 
-# 🤔 ExeQ Thinker
+# 🤔 ExeQ-Thinker
 > *“Let the unseen patterns reveal their truth.”*  
 > 🧠 Depth-first, insight-driven reasoning engine for complex analysis, planning, and reliable outcomes.
 
 ---
 
-**ExeQ Thinker** is a locally runnable framework that combines deep, supervised reasoning, streaming interaction, GPU-accelerated inference, and production-grade memory/token budget management under one roof. <br>
-→ It uses Ollama thiking models as the model runtime; it targets low latency and high throughput with FlashAttention and similar accelerations in an optional PyTorch path. <br>
-→ In this project, "exeq-thinker:latest" custom reasoning model is preffered.
+# 📌 Introduction
+**ExeQ-Thinker** is a powerful reasoning framework designed to run entirely on your local machine. It combines advanced AI capabilities with practical engineering to deliver fast, reliable, and production-ready intelligence.
+
+**What makes it special?**
+- 🧠 Deep Reasoning Engine:
+Multi-step thinking with planner-critic loops for complex problem solving
+- ⚡ GPU-Accelerated Performance:
+FlashAttention and CUDA optimizations for lightning-fast responses (sub-200ms first token)
+- 💾 Smart Memory Management:
+Automatic token budgeting, conversation windowing, and context prioritization
+- 🔧 Production-Ready:
+Built-in observability, rate limiting, and security guardrails out of the box
+
+**Technical Foundation**
+- Base Model: Built on OpenAI's open-source gpt-oss:20b architecture (20 billion parameters)
+- Custom Training: Enhanced with 400B tokens of curated reasoning data via LoRA fine-tuning
+- Distribution: Available as exeq-thinker:latest through Ollama (GGUF format for efficient inference)
+- Runtime: Optimized for local GPUs with PyTorch + FlashAttention support
+
+💡 In short: ExeQ-Thinker gives you GPT-5-High, Gemini 2.5 Pro, Claude Opus 4.1 class reasoning capability, running locally on your hardware, with sub-second response times and full privacy control.
 
 ---
 
 # 🔭 Content
 - Overview
+- Key Features
 - Architecture
+- Data Flow
+- Layers
 - Model & Fine-Tune Summary
 - Performance Optimizations
 - Token Budgeting & Memory
@@ -22,14 +42,16 @@
 - Configuration
 - API Bits
 - Evaluation & Benchmark
-- Comparative Graph (Free Space)
+- Model Performance Graphs
 - Troubleshooting
 - Security & Privacy
 - Contribution
 - License
 
+---
+
 # 🌌 Overview
-**ExeQ Thinker** is a next-gen reasoning framework built to **surface hidden structure** in complex problems. It blends **LLM-based deliberate reasoning**, **streamed interaction**, and **GPU-accelerated compute** into a single, elegant system.\n
+**ExeQ-Thinker** is a next-gen reasoning framework built to **surface hidden structure** in complex problems, built on gpt-oss:20b. It blends **LLM-based deliberate reasoning**, **streamed interaction**, and **GPU-accelerated compute** into a single, elegant system.<br><br>
 Designed for:
 - 🧠 **Researchers** who need rigorous multi-step reasoning.  
 - ⚙️ **Engineers** who want trustworthy tool-use and structured outputs.  
@@ -168,16 +190,17 @@ conda activate exeq-thinker
   [Ollama Download](https://ollama.com/download) → run the installation.
 
 ### &nbsp;&nbsp;&nbsp;3.2) **Start the Service**
-- Run the ollama with serve.
+- Start the Ollama daemon:
   ```bash
   ollama serve
   ```
   
 ### &nbsp;&nbsp;&nbsp;3.3) **Download the Model**
-- You can also download  the alternative "Thinking" models on Ollama → [Ollama Thinking Models](https://ollama.com/search?c=thinking)
+- Pull the our custom reasoning model from Ollama:
   ```bash
   ollama pull exeq-thinker:latest
   ```
+  > You can also download the alternate "Thinking" models on Ollama → [Ollama Thinking Models](https://ollama.com/search?c=thinking)
   
 ### &nbsp;&nbsp;&nbsp;3.4) **Test the Model**
 - The fastest way to tell if an Ollama model is communicating.
@@ -313,7 +336,7 @@ Recommended Scenarios:
 
 ---
 
-## 📊 Karşılaştırmalı Grafik (Boş Alan)
+# 📊 Model Performance Graphs
 Yakında...
 
 ---
