@@ -8,7 +8,7 @@
 
 **ExeQ Thinker** is a locally runnable framework that combines deep, supervised reasoning, streaming interaction, GPU-accelerated inference, and production-grade memory/token budget management under one roof. <br>
 → It uses Ollama thiking models as the model runtime; it targets low latency and high throughput with FlashAttention and similar accelerations in an optional PyTorch path. <br>
-→ In this project, "gpt-oss-20b-exeq:latest" custom reasoning model is preffered.
+→ In this project, "exeq-thinker:latest" custom reasoning model is preffered.
 
 ---
 
@@ -43,7 +43,7 @@ Designed for:
 - 📡 Real-Time Streaming: Instant feedback and controlled tone with token-streaming.
 - 🧰 Easy Integration: RAG, SQL/API tools, evaluators, and observability (logging).
 - 🔒 Production Ready: Token budget, memory windows, guardrails, rate-limit, audit-logs.
-- 🧠 Local & Powerful: Sub-second first-piece target with Ollama "gpt-oss-20b-exeq:latest" and FlashAttention-based optimizations.
+- 🧠 Local & Powerful: Sub-second first-piece target with Ollama "exeq-thinker:latest" and FlashAttention-based optimizations.
 
 ---
 
@@ -55,7 +55,7 @@ flowchart TD
     B --> C[Deliberation Engine<br/>Planner ↔ Critic Loops]
     B --> D[Tool Router<br/>RAG / SQL / APIs]
     B --> E[Memory Manager<br/>Token Budget]
-    C --> F[Inference Backend<br/>gpt-oss-20b-exeq:latest]
+    C --> F[Inference Backend<br/>exeq-thinker:latest]
     F --> |GPU| G[CUDA Kernels<br/>FlashAttention / SDPA]
     D --> H[RAG Store / Vectors]
     E --> I[Conversation Logs / Summaries]
@@ -71,7 +71,7 @@ sequenceDiagram
     participant U as User
     participant C as ExeQ Core
     participant P as Planner/Critic
-    participant O as Ollama (gpt-oss-20b-exeq:latest)
+    participant O as Ollama (exeq-thinker:latest)
     participant R as RAG / Tools
     U->>C: Prompt / Message
     C->>P: Plan & hypotheses
@@ -86,7 +86,7 @@ sequenceDiagram
 
 # 🧱 Layers
 - Core: Flow control, scheduler/critic, guardrails.
-- Models: Ollama gpt-oss-20b-exeq:latest integration (local).
+- Models: Ollama exeq-thinker:latest integration (local).
 - Memory: Window management, summarization, slot-recovery.
 - Tools: RAG, SQL, HTTP/API tool routing.
 - Observability: Token usage metrics, latency distributions, error reporting.
@@ -94,16 +94,17 @@ sequenceDiagram
 ---
 
 # 🧬 Model & Fine-Tune Summary
-- Base Runtime: gpt-oss-20b-exeq:latest via ollama (20B parameters).
+- Base Runtime: exeq-thinker:latest via ollama (20B parameters).
 - Training/Fine-Tuning:
   - Data: ~1.8M clean & curated samples (~400B tokens) → web, academic, code & dialogue data; deduplicated, normalized, filtered for quality.
   - Total Tokens: ~400 billion tokens (after cleaning + deduplication)
   - Environment: Unsloth-optimized LoRA fine-tuning → lightweight & efficient adaptation strategy.
+  - Training Duration: Completed in ~11 days on dual RTX 5090, achieving ~1.2M tokens/sec throughput and traversing ~400B tokens over 3 LoRA epochs.
   - Objective: Deliberate reasoning quality, tool call accuracy, long-context consistency.
   - Curation: High-quality reasoning chains, code/SQL examples, multilingual Q&A, safe usage guidelines.
   - Noise Reduction: Dedup, quality scorers, toxicity and PI protection filters.
 - Inference: Low latency + high token/s target on local GPU; aggressive pre-provisioning for time to first token (TTFT).
-> Note: This repo does not distribute the model; It pulls gpt-oss-20b-exeq:latest custom model from Ollama and runs it with ExeQ's architecture.
+> Note: This repo does not distribute the model; It pulls exeq-thinker:latest custom model from Ollama and runs it with ExeQ's architecture.
 
 ---
 
@@ -175,13 +176,13 @@ conda activate exeq-thinker
 ### &nbsp;&nbsp;&nbsp;3.3) **Download the Model**
 - You can also download  the alternative "Thinking" models on Ollama → [Ollama Thinking Models](https://ollama.com/search?c=thinking)
   ```bash
-  ollama pull gpt-oss-20b-exeq:latest
+  ollama pull exeq-thinker:latest
   ```
   
 ### &nbsp;&nbsp;&nbsp;3.4) **Test the Model**
 - The fastest way to tell if an Ollama model is communicating.
   ```bash
-  ollama run gpt-oss-20b-exeq:latest "Hello, could you introduce yourself?"
+  ollama run exeq-thinker:latest "Hello, could you introduce yourself?"
   ```
 > ⚡ CUDA 12.8+ is recommended for GPU acceleration. Accelerations such as FlashAttention etc. are supported.
 
@@ -237,7 +238,7 @@ exeq-thinker/
 │   │── core/              # Planner, critic, streaming orchestrator
 │   │── memory/            # Windowing, summaries, pinning, budgets
 │   │── tools/             # RAG, SQL, HTTP/API connectors
-│   │── models/            # Ollama adapter (gpt-oss-20b-exeq:latest), backends
+│   │── models/            # Ollama adapter (exeq-thinker:latest), backends
 │── tests/                 # Unit & integration
 │── docs/                  # Extra docs & how-tos
 ```
@@ -253,7 +254,7 @@ server:
 
 model:
   provider: ollama
-  name: gpt-oss-20b-exeq:latest
+  name: exeq-thinker:latest
   max_context: 40000
   temperature: 0.2
   stream: true
@@ -301,7 +302,7 @@ Ready/life control.
 # 📏 Evaluation & Benchmark
 Local Speed ​​Test (sample script)
 ```
-python -m tests.bench.latency --model gpt-oss-20b-exeq:latest --runs 5 --length 256
+python -m tests.bench.latency --model exeq-thinker:latest --runs 5 --length 256
 # Output: TTFT(ms), tok/s, VRAM(GB), cache hit/miss
 ```
 Recommended Scenarios:
@@ -339,10 +340,10 @@ This project is available under the **Apache 2.0** license.
 ---
 
 # 🧩 Closing
-ExeQ Thinker combines local-first, GPU-accelerated, and auditable reasoning, providing a reliable framework for the entire journey from research to production. Ollama reduces first-piece latency with gpt-oss-20b-exeq:latest custom model, FlashAttention/SDPA, and strict token budgets, maintains long-context consistency, and disciplines tooling (RAG/SQL/API). The ~1.8M raw samples and ~400B token tweaks significantly improve the accuracy of planner/critic loops, the stability of memory windows, and the readability of production metrics.
+ExeQ Thinker combines local-first, GPU-accelerated, and auditable reasoning, providing a reliable framework for the entire journey from research to production. Ollama reduces first-piece latency with "exeq-thinker:latest" custom model, FlashAttention/SDPA, and strict token budgets, maintains long-context consistency, and disciplines tooling (RAG/SQL/API). The ~1.8M raw samples and ~400B token tweaks significantly improve the accuracy of planner/critic loops, the stability of memory windows, and the readability of production metrics.
 
 Next steps:
-- Clone the project, set up the environment, pull gpt-oss-20b-exeq:latest, and run local testing with /chat.
+- Clone the project, set up the environment, pull exeq-thinker:latest, and run local testing with /chat.
 - Prepare the context store with /rag/reindex; experiment with summarization/"pin" logic in long chats.
 - Collect TTFT, tok/s, VRAM, and cache hit metrics on your own workload; Add the results to the Comparative Chart section.
 - Standardize security and traceability by enabling guardrails, rate-limits, and audit logs in production.
