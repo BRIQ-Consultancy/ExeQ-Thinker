@@ -98,6 +98,7 @@ sequenceDiagram
 - Training/Fine-Tuning:
   - Data: ~1.8M clean & curated samples (~400B tokens) → web, academic, code & dialogue data; deduplicated, normalized, filtered for quality.
   - Total Tokens: ~400 billion tokens (after cleaning + deduplication)
+  - Environment: Unsloth-optimized LoRA fine-tuning → lightweight & efficient adaptation strategy.
   - Objective: Deliberate reasoning quality, tool call accuracy, long-context consistency.
   - Curation: High-quality reasoning chains, code/SQL examples, multilingual Q&A, safe usage guidelines.
   - Noise Reduction: Dedup, quality scorers, toxicity and PI protection filters.
