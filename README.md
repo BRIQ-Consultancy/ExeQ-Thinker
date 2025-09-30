@@ -14,8 +14,10 @@
 Multi-step thinking with planner-critic loops for complex problem solving
 - ⚡ GPU-Accelerated Performance:
 FlashAttention and CUDA optimizations for lightning-fast responses (sub-200ms first token)
+- 📄 Massive Context Window
+256K tokens via RoPE scaling—analyze entire codebases, research papers, or long conversations in one go
 - 💾 Smart Memory Management:
-Automatic token budgeting, conversation windowing, and context prioritization
+Automatic token budgeting, context trim, conversation windowing, and context prioritization
 - 🔧 Production-Ready:
 Built-in observability, rate limiting, and security guardrails out of the box
 
@@ -51,11 +53,20 @@ Built-in observability, rate limiting, and security guardrails out of the box
 ---
 
 # 🌌 Overview
-**ExeQ-Thinker** is a next-gen reasoning framework built to **surface hidden structure** in complex problems, built on gpt-oss:20b. It blends **LLM-based deliberate reasoning**, **streamed interaction**, and **GPU-accelerated compute** into a single, elegant system.<br><br>
-Designed for:
-- 🧠 **Researchers** who need rigorous multi-step reasoning.  
-- ⚙️ **Engineers** who want trustworthy tool-use and structured outputs.  
-- 🏢 **Teams** seeking production-ready, auditable AI decisions.
+**ExeQ-Thinker** is a next-gen reasoning framework built to surface hidden structure in complex problems. Built on **gpt-oss:20b**, it blends LLM-based deliberate reasoning, streamed interaction, and GPU-accelerated compute into a single, elegant system.
+
+**Who is it for?**
+- 🧠 Researchers
+Rigorous multi-step reasoning for scientific analysis, literature review, and hypothesis testing
+    > Example: "Analyze 50 papers on quantum decoherence and identify contradictory findings"
+
+- ⚙️ Engineers
+Trustworthy tool-use with structured outputs for production systems
+    > Example: "Generate SQL queries from natural language and validate against schema"
+
+- 🏢 Enterprise Teams
+Production-ready, auditable AI decisions with full observability
+    > Example: "Legal contract analysis with citation tracking and compliance checks"
 
 ---
 
@@ -70,7 +81,6 @@ Designed for:
 ---
 
 # 🏗 Architecture
-ExeQ Thinker follows the pipeline: request → plan → tool/evidence gathering → synthesis → flow.
 ```mermaid
 flowchart TD
     A[User Input] --> B[ExeQ Core]
@@ -122,6 +132,7 @@ sequenceDiagram
   - Total Tokens: ~400 billion tokens (after cleaning + deduplication)
   - Environment: Unsloth-optimized LoRA fine-tuning → lightweight & efficient adaptation strategy.
   - Training Duration: Completed in ~11 days on dual RTX 5090, achieving ~1.2M tokens/sec throughput and traversing ~400B tokens over 3 LoRA epochs.
+  - Long-context training: Synthetic samples up to 128K tokens for RoPE adaptation (128k context length to 256k!)
   - Objective: Deliberate reasoning quality, tool call accuracy, long-context consistency.
   - Curation: High-quality reasoning chains, code/SQL examples, multilingual Q&A, safe usage guidelines.
   - Noise Reduction: Dedup, quality scorers, toxicity and PI protection filters.
