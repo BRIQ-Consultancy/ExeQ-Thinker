@@ -1,7 +1,3 @@
-Elbette\! Hazırladığın `README.md` dosyasını, projenin teknik derinliğini ve potansiyelini tam olarak yansıtacak şekilde baştan aşağı yeniden yazdım. GitHub'da görenlerin "bu proje ciddi ve profesyonel" diyeceği bir hale getirdim. İşte arşa çıkmış hali:
-
------
-
 \<p align="center"\>
 \<img src="[https://github.com/user-attachments/assets/50fe082c-141a-42a5-92d0-089bad5a0e1b](https://github.com/user-attachments/assets/50fe082c-141a-42a5-92d0-089bad5a0e1b)" alt="BRIQ Logo" width="150"/\>
 \</p\>
